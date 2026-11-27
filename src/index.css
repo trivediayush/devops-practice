@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* DevOps Practice — Modern architectural stone & graphite theme
+   Aligned with parent platform devops.atrivedi.online.
+   Solid tactile surfaces, cobalt blue accent, zero green. */
+
+:root {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --surface-bg: #fafaf9;
+  --surface-alt: #f3f3f0;
+  --surface-elv: #ffffff;
+  --surface-soft: #f0f0ec;
+  --surface-code: #eeeeea;
+  --surface-code-block: #f4f4f1;
+
+  --ink-1: #18181b;
+  --ink-2: #4a4a54;
+  --ink-3: #6c6c78;
+
+  --divider: #e4e4df;
+  --gutter: #eaeae5;
+
+  --brand-1: #2558d9;
+  --brand-2: #1e49b8;
+  --brand-3: #193d9c;
+  --brand-ink: #ffffff;
+  --brand-soft: rgba(37, 88, 217, 0.09);
+
+  --accent-warm: #b45309;
+  --accent-warm-soft: rgba(180, 83, 9, 0.09);
+
+  --card-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+  --card-shadow-hover: 0 10px 24px -10px rgba(24, 24, 27, 0.12), 0 1px 3px rgba(24, 24, 27, 0.05);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark {
+  --surface-bg: #1b1d22;
+  --surface-alt: #16181d;
+  --surface-elv: #23262d;
+  --surface-soft: #20232a;
+  --surface-code: #272b34;
+  --surface-code-block: #15171c;
+
+  --ink-1: #f1f2f4;
+  --ink-2: #b8bcc6;
+  --ink-3: #8b909e;
+
+  --divider: #2e323c;
+  --gutter: #242730;
+
+  --brand-1: #6b93f8;
+  --brand-2: #84a6fa;
+  --brand-3: #547ef2;
+  --brand-ink: #0f121a;
+  --brand-soft: rgba(107, 147, 248, 0.14);
+
+  --accent-warm: #d99b43;
+  --accent-warm-soft: rgba(217, 155, 67, 0.14);
+
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --card-shadow-hover: 0 12px 28px -10px rgba(0, 0, 0, 0.44), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--surface-bg);
+    color: var(--ink-1);
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--surface-bg);
+    color: var(--ink-1);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+    transition: background-color 180ms var(--ease-out-expo), color 180ms var(--ease-out-expo);
+  }
+
+  .dark body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.005em;
+  }
+
+  code, pre, kbd, .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  ::selection {
+    background-color: var(--brand-soft);
+    color: var(--ink-1);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand-1);
+    outline-offset: 2px;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Smooth hairline scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--divider);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
